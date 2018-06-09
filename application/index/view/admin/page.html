@@ -1,0 +1,74 @@
+{layout name="admin/layout"/}
+<div class="col-md-3 col-sm-12 forum-sidebar">
+    <div class="panel panel-default">
+        <div class="list-group">
+            <a href="/admin/t" class="list-group-item">话题管理</a>
+            <a href="/admin/r" class="list-group-item">回复管理</a>
+            <a href="/admin/n" class="list-group-item">节点管理</a>
+            <a href="/admin/u" class="list-group-item">用户管理</a>
+            <a href="/admin/p" class="list-group-item active">页面管理</a>
+        </div>
+    </div>
+</div>
+<div class="col-md-9 col-sm-12 forum-admin">
+    <div class="panel panel-default post-list">
+        <div class="panel-heading">
+            <h5>页面管理</h5>
+        </div>
+        <ul class="list-group">
+            {volist name="pageList" id="item"}
+            <li class="list-group-item" id="{$item.pageId}">
+                <div class="panel-body no-padding post-item">
+                    <div class="post-item__content">
+                        <h4><a href="/p/{$item.pageId}" target="_blank">{$item.title}</a></h4>
+                        <ul class="post-item__info">
+                            <li><span class="label label-primary"><a href="/admin/p/change/{$item.pageId}">修改文章</a></span>
+                            <li>{$item.creatTime}</li>
+                        </ul>
+                    </div>
+                    <div class="post-item__reply text-right admin-post__tools">
+                        <span class="label label-danger delete-page" pageid="{$item.pageId}">删除</span>
+                    </div>
+                </div>
+            </li>
+            {/volist}
+        </ul>
+        <div class="panel-footer">
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#add-page">增加页面</button>
+        </div>
+        <div class="modal fade bs-example-modal-lg" id="add-page" tabindex="-1" role="dialog"
+             aria-labelledby="add-page">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <form action="/admin/p/add" method="post" class="form-horizontal">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">增加页面</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="page-name" class="control-label">标题</label>
+                                <input type="text" class="form-control" id="page-name" name="page-name" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="page-alias" class="control-label">别名</label>
+                                <input type="text" class="form-control" id="page-alias" name="page-alias"
+                                       placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="page-content" class="control-label">正文</label>
+                                <textarea id="page-content" data-provide="content" rows="20" name="page-content"
+                                          placeholder=""></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button type="submit" class="btn btn-primary">确认添加</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

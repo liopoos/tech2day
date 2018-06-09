@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tech2Day 后台管理系统</title>
+    <meta name="description" content="Tech2Day"/>
+    <meta name="keywords" content="Tech2Day"/>
+    <meta name="author" content="Hades"/>
+    {php}$theme = widget('Custom/theme');{/php}
+    <link href="_CSS_/bootstrap.main.css" rel="stylesheet">
+    <link rel="stylesheet" href="_CSS_/font-awesome.min.css">
+    <link rel="stylesheet" href="_PLUGIN_/markdown/bootstrap-markdown.min.css">
+    <link rel="stylesheet" href="_CSS_/main.css">
+    <link rel="shortcut icon" href="_IMAGE_/favicon.ico">
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<div class="forum-header">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/admin">Tech2Day后台管理系统</a>
+            </div>
+            {if condition="$Think.session.admin!=null"}
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/admin/logout">注销</a></li>
+                </ul>
+            </div>
+            {/if}
+        </div>
+    </nav>
+</div>
+<div class="forum-container container">
+    <div class="row">
+        {__CONTENT__}
+    </div>
+</div>
+
+<script src="_JS_/jquery.min.js"></script>
+<script src="_JS_/bootstrap.min.js"></script>
+<script src="_PLUGIN_/markdown/bootstrap-markdown.js"></script>
+<script src="_JS_/admin.js"></script>
+</body>
+
+</html>

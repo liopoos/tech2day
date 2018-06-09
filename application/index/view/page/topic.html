@@ -1,0 +1,82 @@
+{layout name="layout"/}
+{if condition="isset($error) && $error != ''"}
+<div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    {$error}
+</div>
+{/if}
+<div class="panel panel-default post-content-header">
+    <div class="forum-navbar">
+        <ol class="breadcrumb no-margin">
+            <li><a href="/">Tech2Day</a></li>
+            <li class="active">{$topicContent.node}</li>
+        </ol>
+    </div>
+    <div class="panel-heading post-content-flex">
+        <div class="post-content-header__title">
+            <h3>{$topicContent.title}</h3>
+            <ul class="post-item__info">
+                <li><strong>{$userInfo.username}</strong></li>
+                <li>{$topicContent.node}</li>
+                <li>{$topicContent.creatTime}</li>
+                <li>{$topicContent.visitNum}次访问</li>
+                <!--<li><span class="label label-default"><a href="#">加入收藏</a></span></li>-->
+            </ul>
+        </div>
+        <div class="post-content-header__img">
+            <img src="_HEADER_/{$userInfo.header}" alt="用户头像">
+        </div>
+    </div>
+    <div class="panel-body" id="post-container">
+        {$topicContent.content}
+    </div>
+    <div class="post-tools">
+    </div>
+
+</div>
+<div class="panel panel-default post-content-list">
+    <div class="panel-heading">
+        <p class="no-margin">{$countReplyItem}条回复</p>
+    </div>
+    <ul class="list-group">
+        {volist name="replyList" id="item"}
+        <li class="list-group-item" id="reply{$item.replyId}">
+            <div class="panel-body no-padding post-content-item">
+                <input type="hidden" id="reply-user" value="{$item.userInfo.username}">
+                <div class="post-item__header">
+                    <img src="_HEADER_/{$item.userInfo.header}" alt="{$item.userInfo.username}的用户头像" class="user-info__header">
+                </div>
+                <div class="post-item__content">
+                    <h4><a href="/u/{$item.userInfo.username}">{$item.userInfo.username}</a>&nbsp;<small>{$item.replyTime} | via {$item.userUA}
+                    </small>
+                    </h4>
+                </div>
+                <div class="post-item__reply text-right">
+                    {if condition="$Think.session.username"}
+                    <a href="#content" class="fa fa-reply" id="reply" onclick="reply()"></a>
+                    <span class="badge post-item__reply-num">#{$i}</span>
+                    {/if}
+                </div>
+            </div>
+            <div class="reply-item__content"><p>{$item.content}</p></div>
+        </li>
+        {/volist}
+    </ul>
+</div>
+{if condition="$Think.session.username!==null"}
+
+<div class="panel panel-default post-reply">
+    <div class="panel-heading">
+        <p class="no-margin">回复 {$topicContent.title}</p>
+    </div>
+    <div class="panel-body no-padding">
+        <form method="post" action="/t/{$topicContent.topicId}">
+            <input type="hidden" name="token" value="{$Request.token}"/>
+            <textarea name="content" id="content" data-provide="markdown" rows="10"
+                      placeholder="请文明发言，支持Markdown模式 :)"></textarea>
+            <button class="btn btn-default btn-reply btn-block" type="submit">回复</button>
+        </form>
+    </div>
+
+</div>
+{/if}

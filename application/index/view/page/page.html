@@ -1,0 +1,15 @@
+{layout name="layout"/}
+
+<div class="panel panel-default post-content-header">
+    <div class="panel-heading post-content-flex">
+        <div class="post-content-header__title">
+            <h3>{$pageContent.title}</h3>
+            <ul class="post-item__info">
+                <li>{$pageContent.creatTime}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="panel-body" id="post-container">
+        {$pageContent.content}
+    </div>
+</div>

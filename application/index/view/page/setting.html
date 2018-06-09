@@ -1,0 +1,127 @@
+{layout name="layout"/}
+{if condition="isset($error) && $error != ''"}
+<div class="alert alert-danger" role="alert">{$error}</div>
+{/if}
+{if condition="isset($success) && $success != ''"}
+<div class="alert alert-success" role="alert">{$success}</div>
+{/if}
+{include file="component/pathbar" path="个人设置"/}
+<div class="panel panel-default">
+    <div class="panel-body">
+        <form class="form-horizontal" method="post" action="/setting">
+            <input type="hidden" name="method" value="user"/>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">用户名</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">{$userInfo.username}</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">电子邮箱</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">{$userInfo.email}</p>
+                </div>
+            </div>
+            <!--<div class="form-group">-->
+            <!--<label class="col-sm-2 control-label">电子邮箱验证</label>-->
+            <!--<div class="col-sm-10">-->
+            <!--<p class="form-control-static">已完成验证 > <a href="#">修改</a></p>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="form-group">-->
+            <!--<label class="col-sm-2 control-label">电子邮箱验证</label>-->
+            <!--<div class="col-sm-10">-->
+            <!--<button type="button" class="btn btn-default">验证</button>-->
+            <!--</div>-->
+            <!--</div>-->
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="profile">个人简介</label>
+                <div class="col-sm-10">
+                        <textarea class="form-control" name="profile" id="profile" rows="5"
+                                  placeholder="一句话介绍自己吧 :)">{$userInfo.profile}</textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="customcss">自定义CSS</label>
+                <div class="col-sm-10">
+                        <textarea class="form-control" rows="5" id="customcss" name="customcss"
+                                  placeholder="你可以使用自定义的CSS，将自动加载在<head>的<style>中">{$userInfo.customStyle}</textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="theme">主题</label>
+                <div class="col-sm-10">
+                    <select class="form-control" id="theme" name="theme">
+                        <option value="1">主题1</option>
+                        <option value="2">主题2</option>
+                        <option value="3">主题3</option>
+                        <option value="4">主题4</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">保存设置</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h5>更改头像</h5>
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal" method="post" action="/setting">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">当前头像</label>
+                <div class="col-sm-10 post-content-header__img">
+                    <img src="_HEADER_/{$userInfo.email|md5}" alt="用户头像">
+                </div>
+                <small class="col-sm-offset-2 col-sm-10">你可以通过 <a href="https://gravatar.com/"
+                                                                  target="_blank">Gravatar</a>
+                    设置你在 Tech2Day 的头像
+                </small>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h5>更改密码</h5>
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal" method="post" action="/setting">
+            <input type="hidden" name="method" value="password"/>
+            <div class="form-group">
+                <label for="current-password" class="col-sm-2 control-label">当前密码</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="current-password" name="current-password"
+                           placeholder="请输入当前密码">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-sm-2 control-label">新密码</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="password" name="password"
+                           placeholder="请输入新的密码">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password_confirm" class="col-sm-2 control-label">确认新密码</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="password_confirm" name="password_confirm"
+                           placeholder="请确认新的密码">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">更改</button>
+                </div>
+                <small class="col-sm-offset-2 col-sm-10">如果不需要更改密码，请不要提交此项。</small>
+            </div>
+        </form>
+    </div>
+</div>

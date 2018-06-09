@@ -1,0 +1,38 @@
+{layout name="admin/layout"/}
+<div class="col-md-3 col-sm-12 forum-sidebar">
+    <div class="panel panel-default">
+        <div class="list-group">
+            <a href="/admin/t" class="list-group-item">话题管理</a>
+            <a href="/admin/r" class="list-group-item active">回复管理</a>
+            <a href="/admin/n" class="list-group-item">节点管理</a>
+            <a href="/admin/u" class="list-group-item">用户管理</a>
+            <a href="/admin/p" class="list-group-item">页面管理</a>
+        </div>
+    </div>
+</div>
+<div class="col-md-9 col-sm-12 forum-admin">
+    <div class="panel panel-default post-list">
+        <div class="panel-heading">
+            <h5>回复管理</h5>
+        </div>
+        <ul class="list-group">
+            {volist name="replyList" id="item"}
+            <li class="list-group-item">
+                <div class="panel-body no-padding post-item">
+                    <div class="post-item__content">
+                        <p>{$item.content}</p>
+                        <ul class="post-item__info">
+                            <li><strong>{$item.userInfo.username}</strong></li>
+                            <li>{$item.replyTime}</li>
+                            <li>发表在：<a href="/t/{$item.topic_content.topicId}#reply{$item.replyId}" target="_blank">{$item.topic_content.title}</a></li>
+                        </ul>
+                    </div>
+                    <div class="post-item__reply text-right admin-post__tools">
+                        <span class="label label-danger delete-reply" replyid="{$item.replyId}">删除</span>
+                    </div>
+                </div>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+{layout name="layout"/}
+<div class="panel panel-default">
+    {include file="component/pathbar" path="提醒"/}
+    <div class="at-list">
+        <ul class="list-group">
+            {volist name="noticeList" id="item"}
+            <li class="list-group-item">
+                <div class="at-item-flex">
+                    <div class="at-item__header">
+                        <img src="_HEADER_/{$item.user_info.email|md5}" alt="用户头像">
+                    </div>
+                    <div class="at-item__content">
+                        <p> {$item.user_info.username} 在回复 <strong><a href="/t/{$item.topic_content.topicId}#reply-{$item.replyId}">{$item.topic_content.title}</a></strong> 时提到了你</p>
+                        <div class="at-item__reply">
+                            <p class="no-margin">{$item.content}</p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+</div>

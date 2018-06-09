@@ -1,0 +1,27 @@
+{layout name="layout"/}
+
+<div class="panel panel-default">
+    {include file="component/pathbar" path="回复的话题"/}
+    <ul class="list-group">
+        {volist name="userReply" id="item"}
+        <li class="list-group-item">
+            <div class="reply-item-flex">
+                <div class="reply-item__content">
+                    <blockquote>
+                        <p>{$item.content}</p>
+                    </blockquote>
+                </div>
+                <div class="reply-item__time text-right">
+                    <span class="label label-default">{$item.replyTime}</span>
+                </div>
+            </div>
+            <div class="reply-item__topic col-sm-offset-1">
+                <p class="no-margin">{$item.topic_content.user_info.username} 创建的主题 > <a href="/t/{$item.topic_content.topicId}#reply{$item.replyId}">{$item.topic_content.title}</a></p>
+            </div>
+        </li>
+        {/volist}
+    </ul>
+    <div class="panel-footer">
+        {$userReply->render()}
+    </div>
+</div>

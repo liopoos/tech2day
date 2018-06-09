@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{$title}</title>
+    <meta name="description" content="Tech2Day"/>
+    <meta name="keywords" content="Tech2Day"/>
+    <meta name="author" content="Hades"/>
+    {php}$theme = widget('Custom/theme');{/php}
+    <link href="_CSS_/{$theme}" rel="stylesheet">
+    <link rel="stylesheet" href="_CSS_/font-awesome.min.css">
+    <link rel="stylesheet" href="_PLUGIN_/markdown/bootstrap-markdown.min.css">
+    <link rel="stylesheet" href="_CSS_/main.css">
+    <link rel="shortcut icon" href="_IMAGE_/favicon.ico">
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        {$Think.cookie.css}
+    </style>
+</head>
+
+<body>
+{include file="component/header" /}
+<div class="forum-container container">
+    <div class="row">
+        <div class="col-md-9 col-sm-12 forum-content">
+            {__CONTENT__}
+        </div>
+        <div class="col-md-3 col-sm-12 forum-sidebar">
+            {include file="component/sidebar" /}
+        </div>
+    </div>
+</div>
+{include file="component/footer" /}
+
+<script src="_JS_/jquery.min.js"></script>
+<script src="_JS_/bootstrap.min.js"></script>
+<script src="_PLUGIN_/markdown/bootstrap-markdown.js"></script>
+<script src="_PLUGIN_/highlight/highlight.js"></script>
+<script src="_JS_/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+{layout name="layout"/}
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="panel-heading user-flex">
+            <div class="user-header">
+                <img src="_HEADER_/{$userInfo.email|md5}" alt="用户头像">
+            </div>
+            <div class="user-info">
+                <h3>@ {$userInfo.username}</h3>
+                <ul class="user-info__ul">
+                    <li><span class="label label-success">在线</span></li>
+                    <li>第{$userInfo.userId}号用户</li>
+                    <li>加入时间：{$userInfo.joinTime}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h5>{$userInfo.username}创建的主题</h5>
+    </div>
+    <ul class="list-group">
+        {volist name="userTopic" id="item"}
+        <li class="list-group-item">
+            <div class="panel-body no-padding post-item">
+                <div class="post-item__content">
+                    <h4><a href="/t/{$item.topicId}">{$item.title}</a></h4>
+                    <ul class="post-item__info">
+                        <li class="post-item__node">{$item.node}</li>
+                        <li><strong>{$item.user_info.username}</strong></li>
+                        <li>{$item.creatTime}</li>
+                        <li>最后回复：<strong>{$item.lastReply}</strong></li>
+                    </ul>
+                </div>
+                <div class="post-item__reply text-right">
+                    <span class="badge post-item__reply-num">{$item.reply_num}</span>
+                </div>
+            </div>
+        </li>
+        {/volist}
+    </ul>
+    <div class="panel-footer">
+        <a href="/c/{$userInfo.username}">> 查看更多创建的话题</a>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h5>{$userInfo.username}回复的话题</h5>
+    </div>
+    <ul class="list-group">
+        {volist name="userReply" id="item"}
+        <li class="list-group-item">
+            <div class="reply-item-flex">
+                <div class="reply-item__content">
+                    <blockquote>
+                        <p>{$item.content}</p>
+                    </blockquote>
+                </div>
+                <div class="reply-item__time text-right">
+                    <span class="label label-default">{$item.replyTime}</span>
+                </div>
+            </div>
+            <div class="reply-item__topic col-sm-offset-1">
+                <p class="no-margin">{$item.topic_content.user_info.username} 创建的主题 > <a href="/t/{$item.topic_content.topicId}#reply-{$item.replyId}">{$item.topic_content.title}</a></p>
+            </div>
+        </li>
+        {/volist}
+    </ul>
+    <div class="panel-footer">
+        <a href="/r/{$userInfo.username}">> 查看更多回复的话题</a>
+    </div>
+
+</div>

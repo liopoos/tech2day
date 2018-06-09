@@ -1,0 +1,120 @@
+{if condition="$Think.session.username==null"}
+<div class="forum-loginfrom">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4><strong>Tech2Day</strong></h4>
+            <p>一个分享生活的地方。</p>
+        </div>
+        <div class="panel-body text-center">
+            <a class="btn btn-default" href="/login" role="button">登录</a>
+            <p class="ten-margin">还没有账号？<a href="/register">注册账号</a></p>
+        </div>
+    </div>
+</div>
+{else /}
+{php}$userInfo = widget('SideBar/userInfo');{/php}
+<div class="forum-userinfo">
+    <div class="panel panel-default">
+        <div class="panel-heading forum-userinfo-flex">
+            <img src="_HEADER_/{$userInfo.email|md5}" alt="我的头像" class="user-info__header">
+            <h4>@{$userInfo.username}</h4>
+        </div>
+        <div class="panel-body">
+            <p class="no-margin"><li class="fa fa-cube"></li><a href="/notifications">我的通知提醒</a></p>
+        </div>
+        <a class="btn btn-default btn-block" href="/new">发表新主题
+        </a>
+    </div>
+</div>
+{/if}
+
+{php}$hotList = widget('SideBar/hotTopic');{/php}
+<div class="forum-hot">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h5>热议主题</h5>
+        </div>
+        <ul class="list-group">
+            {volist name="hotList" id="item"}
+            <li class="list-group-item">
+                <div class="hot-item">
+                    <div class="hot-item__header">
+                        <img src="_HEADER_/{$item.email|md5}" alt="">
+                    </div>
+                    <div class="hot-item__title">
+                        <a href="/t/{$item.topicId}">{$item.title}</a>
+                    </div>
+                </div>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+</div>
+
+{php}$starList = widget('SideBar/starTopic');{/php}
+<div class="forum-hot">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h5>精选主题</h5>
+        </div>
+        <ul class="list-group">
+            {volist name="starList" id="item"}
+            <li class="list-group-item">
+                <div class="hot-item">
+                    <div class="hot-item__header">
+                        <img src="_HEADER_/{$item.user_info.email|md5}" alt="">
+                    </div>
+                    <div class="hot-item__title">
+                        <a href="/t/{$item.topicId}">{$item.title}</a>
+                    </div>
+                </div>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+</div>
+
+{php}$forumInfo = widget('SideBar/forumInfo');{/php}
+<div class="forum-info">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h5>运行状态</h5>
+        </div>
+        <div class="panel-body">
+            <dl class="dl-horizontal">
+                <dt>注册会员</dt>
+                <dd>{$forumInfo.userCount}</dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt>话题</dt>
+                <dd>{$forumInfo.topicCount}</dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt>回复</dt>
+                <dd>{$forumInfo.replyCount}</dd>
+            </dl>
+        </div>
+    </div>
+</div>
+{php}$systemInfo = widget('SideBar/systemInfo');{/php}
+<div class="system-info">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h5>系统运行状态</h5>
+        </div>
+        <div class="panel-body">
+            <dl class="dl-horizontal">
+                <dt>PHP版本</dt>
+                <dd>{$systemInfo.phpVersion}</dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt>系统版本</dt>
+                <dd>{$systemInfo.system}</dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt>当前时间</dt>
+                <dd>{$systemInfo.now}</dd>
+            </dl>
+        </div>
+    </div>
+</div>
