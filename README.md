@@ -11,7 +11,9 @@
 
 ### Screenshots
 
-![屏幕快照 2018-05-31 17.29.24](/Users/hades/Pictures/屏幕快照 2018-05-31 17.29.24.png)
+![](https://cdn.mayuko.cn/blog/20180609140150.png)
+
+![](https://cdn.mayuko.cn/blog/20180609140211.png)
 
 ![](https://cdn.mayuko.cn/blog/20180609140204.png)
 
