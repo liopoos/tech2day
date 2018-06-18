@@ -2,6 +2,8 @@
 
 使用ThinkPHP（基于PHP的MVC框架），Bootstrap（基于HTML5和CSS3的UI框架）进行组合开发的一个网络论坛。
 
+Demo：http://tech2day.mayuko.cn
+
 ### Features
 
 - 系统采用模块化开发方案
