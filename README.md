@@ -1,14 +1,14 @@
 ### Tech2Day
 
-使用ThinkPHP（基于PHP的MVC框架），Bootstrap（基于HTML5和CSS3的UI框架）进行组合开发的一个网络论坛。
+使用 ThinkPHP（基于 PHP 的 MVC 框架），Bootstrap（基于 HTML5 和 CSS3 的 UI 框架）进行组合开发的一个网络论坛，用于毕业设计。
 
 Demo：http://tech2day.mayuko.cn
 
 ### Features
 
 - 系统采用模块化开发方案
-- 采用B/S体系结构
-- 使用MVC设计模式
+- 采用 B/S 体系结构
+- 使用 MVC 设计模式
 - 支持响应式
 
 ### Screenshots
