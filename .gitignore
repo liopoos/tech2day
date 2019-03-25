@@ -1,0 +1,46 @@
+# composer
+/vendor/
+composer.lock
+
+# code style
+codestyle/config
+
+# Mac
+.DS_Store
+.idea
+
+# Zend Studio
+.buildpath
+.project
+.settings/
+
+# Lavarel
+.env
+.*.env
+storage/excel/
+storage/exports/
+storage/*.pid
+
+# node
+node_modules/
+bower_components/
+
+# Other
+.tags*
+# Library/
+.cache
+npm-debug.log
+
+_ide_helper.php
+build?token*
+resources/map/setting/map.json
+*.log
+*.tar.gz
+
+.nfs.*
+._.*
+apidoc/docs
+.phpintel
+public/uploads/
+.php_cs.cache
+
