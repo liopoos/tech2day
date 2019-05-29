@@ -1,3 +1,5 @@
+![GitHub](https://img.shields.io/github/license/mayuko2012/tech2day.svg?logo=MIT)
+
 ### Tech2Day
 
 使用 ThinkPHP（基于 PHP 的 MVC 框架），Bootstrap（基于 HTML5 和 CSS3 的 UI 框架）进行组合开发的一个网络论坛，用于毕业设计。
